@@ -1,10 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 function App() {
     const [imgCount, setImgCount] = useState(1);
     const [imgLocation, setImgLocation] = useState("1c.jpg");
 
     useEffect(() => {
+        setImgLocation(`${imgCount}c.jpg`);
+    }, [imgCount]);
+
+    const updateImgLocation = useCallback(() => {
         setImgLocation(`${imgCount}c.jpg`);
     }, [imgCount]);
 
@@ -28,6 +32,7 @@ function App() {
                     <button
                         onClick={() => {
                             if (imgCount - 1 > 0) setImgCount(imgCount - 1);
+                            updateImgLocation();
                         }}
                         className="text-base hover:outline hover:outline-white"
                     >
@@ -36,6 +41,7 @@ function App() {
                     <button
                         onClick={() => {
                             if (imgCount + 1 <= 10) setImgCount(imgCount + 1);
+                            updateImgLocation();
                         }}
                         className="text-base hover:outline hover:outline-white"
                     >
