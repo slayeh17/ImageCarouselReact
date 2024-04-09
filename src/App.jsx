@@ -10,8 +10,6 @@ function App() {
 
     return (
         <div className="overflow-hidden h-screen">
-            {" "}
-            {/* Main container with hidden overflow */}
             <div className="w-full h-full blur-md">
                 <img src={imgLocation} className="rounded-xl" />
             </div>
